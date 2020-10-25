@@ -2,14 +2,18 @@ version: "3.8"
 
 services:
    app:
+      image: branodock/nginx-nextjs_app
       build: app/
       ports:
          - "3000:3000"
 
    nginx:
+      image: branodock/nginx-nextjs_nginx
       build: nginx/
       ports: 
          - "80:80"
       links:
-         - "app:app"
+         - "app"
+      restart: "always"
+      
       
